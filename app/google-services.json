@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "478671747646",
+    "project_id": "desafio4-b9fae",
+    "storage_bucket": "desafio4-b9fae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478671747646:android:8d2f727384eb303a84ef6f",
+        "android_client_info": {
+          "package_name": "com.levi.desafio4"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478671747646-pd7t3obkp7ceof9aq4tqd8q41pt86iom.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATf399t5gTIv7I_QXvB6hVwlU9FhRLPEM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "478671747646-pd7t3obkp7ceof9aq4tqd8q41pt86iom.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,16 @@
+package com.levi.desafio4.viewmodel
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.levi.desafio4.service.Firebase
+import kotlinx.coroutines.launch
+
+class AuthViewModel(val firebase: Firebase): ViewModel() {
+
+    fun registerUser(name: String, email: String, password: String) {
+        viewModelScope.launch {
+            firebase.registerUser(name, email, password)
+        }
+    }
+
+}
