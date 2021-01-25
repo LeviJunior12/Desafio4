@@ -9,4 +9,7 @@
     <string name="tf_name">Name</string>
     <string name="btn_create_account">Create Account</string>
     <string name="tfc_password">Repeate password</string>
+    <string name="tf_describe">Description</string>
+    <string name="btn_save_game">Save Game</string>
+    <string name="tf_create_at">Created At</string>
 </resources>

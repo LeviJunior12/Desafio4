@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="380dp"
+    android:layout_margin="20dp"
+    android:background="@drawable/round_login_body"
+    android:padding="20dp">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_photo_camera"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/white">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tfNameGame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/tf_name" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/white">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tfCreateAt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/tf_create_at" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/white">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tfDescribe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/tf_describe" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnSaveGame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/btn_save_game"/>
+
+</LinearLayout>
