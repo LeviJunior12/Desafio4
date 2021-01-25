@@ -11,7 +11,15 @@ class Firebase() : FirebaseInterface {
     }
 
     override suspend fun authUser(email: String, password: String) {
-        TODO("Not yet implemented")
+        getInstanceFirebase().signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                try {
+                    val firebaseUser: FirebaseUser = task.result?.user!!
+                    Log.i("LOGIN USER", "LOGADO COM SUCESSO")
+                } catch (e: Exception) {
+                    Log.i("ERROR LOGIN USER", e.message.toString())
+                }
+            }
     }
 
     override suspend fun registerUser(name: String, email: String, password: String) {

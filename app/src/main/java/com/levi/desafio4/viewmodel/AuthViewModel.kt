@@ -7,6 +7,12 @@ import kotlinx.coroutines.launch
 
 class AuthViewModel(val firebase: Firebase): ViewModel() {
 
+    fun loginUser(email: String, password: String) {
+        viewModelScope.launch {
+            firebase.authUser(email, password)
+        }
+    }
+
     fun registerUser(name: String, email: String, password: String) {
         viewModelScope.launch {
             firebase.registerUser(name, email, password)
