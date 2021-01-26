@@ -25,7 +25,6 @@ class LoginFragment : Fragment() {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
                 return AuthViewModel(firebase) as T
             }
-
         }
     }
 
@@ -48,7 +47,8 @@ class LoginFragment : Fragment() {
     private fun loginUser(view: View) {
         view.btn_login.setOnClickListener {
             getDataFields(view)
-            viewModel.loginUser(email, password)
+            // viewModel.loginUser(email, password)
+            findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
         }
     }
 
