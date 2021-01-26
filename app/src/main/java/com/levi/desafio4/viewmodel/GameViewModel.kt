@@ -12,4 +12,10 @@ class GameViewModel(val gameFirebase: DatabaseFirebase): ViewModel() {
             gameFirebase.saveGame(table, game)
         }
     }
+
+    fun getAllGame(table: String) {
+        viewModelScope.launch {
+            gameFirebase.getAllGame(table)
+        }
+    }
 }
