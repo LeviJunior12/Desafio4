@@ -47,8 +47,18 @@ class LoginFragment : Fragment() {
     private fun loginUser(view: View) {
         view.btn_login.setOnClickListener {
             getDataFields(view)
-            // viewModel.loginUser(email, password)
-            findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+            viewModel.loginUser(email, password)
+            viewModel.userLogin.observe(viewLifecycleOwner, {
+                when (viewModel.userLogin.value) {
+                    true -> {
+                        findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                    }
+                    else -> {
+                        Log.i("ERROR", "ERRO AO EFETUAR O LOGIN")
+                    }
+                }
+            })
+
         }
     }
 
