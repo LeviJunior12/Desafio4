@@ -33,6 +33,7 @@ class DatabaseFirebase {
 
         this.reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                listGames.clear()
                 snapshot.children.forEach {
                     val game = Gson().fromJson(it.value.toString(), Game::class.java)
                     listGames.add(game)
