@@ -36,9 +36,14 @@ class Firebase() : FirebaseInterface {
         getInstanceFirebase().createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 try {
-                    val firebaseUser: FirebaseUser = task.result?.user!!
-                    Log.i("REGISTER USER", "USER REGISTER")
+                    if(task.isSuccessful) {
+                        val firebaseUser: FirebaseUser = task.result?.user!!
+                        authUser.value = true
+                        user = User(firebaseUser.uid, firebaseUser.email.toString())
+                        Log.i("REGISTER USER", "USER REGISTER")
+                    }
                 } catch (e: Exception) {
+                    authUser.value = false
                     Log.i("ERROR REGISTER", task.exception?.message.toString())
                 }
             }

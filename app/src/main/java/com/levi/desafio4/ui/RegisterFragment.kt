@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.levi.desafio4.R
 import com.levi.desafio4.service.firebase
 import com.levi.desafio4.viewmodel.AuthViewModel
@@ -51,6 +52,16 @@ class RegisterFragment : Fragment() {
         getDataFields(view)
         Log.i("ERROR REGISTER", "CHAMEI O CREATE ACCOUNT")
         viewModel.registerUser(name, email, password)
+        viewModel.userLogin.observe(viewLifecycleOwner, {
+            when (viewModel.userLogin.value) {
+                true -> {
+                    findNavController().navigate(R.id.action_registerFragment_to_homeFragment)
+                }
+                else -> {
+                    Log.i("ERRO NO REGISTRO", "ERRO NO REGISTRO")
+                }
+            }
+        })
     }
 
     private fun getDataFields(view: View){
