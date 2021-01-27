@@ -1,11 +1,11 @@
 package com.levi.desafio4.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -32,6 +32,11 @@ class HomeFragment : Fragment(), onClickListenerGame {
         }
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.getAllGame("games")
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,7 +61,6 @@ class HomeFragment : Fragment(), onClickListenerGame {
         recyclerView.layoutManager = gridLayoutManager
         recyclerView.setHasFixedSize(true)
 
-        viewModel.getAllGame("games")
     }
 
     private fun addGame(view: View) {
@@ -66,8 +70,12 @@ class HomeFragment : Fragment(), onClickListenerGame {
     }
 
     override fun gameClick(position: Int) {
-        Log.i("POSITION ADAPTER", position.toString())
-        findNavController().navigate(R.id.action_homeFragment_to_detailGameFragment)
+        viewModel.listGame.observe(this, {
+            val game = it[position]
+
+            var bundle = bundleOf("game" to game)
+            findNavController().navigate(R.id.action_homeFragment_to_detailGameFragment, bundle)
+        })
     }
 
 }
