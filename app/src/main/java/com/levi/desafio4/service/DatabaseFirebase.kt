@@ -8,7 +8,7 @@ import com.levi.desafio4.entity.Game
 class DatabaseFirebase {
 
     lateinit var reference: DatabaseReference
-    var listGames: ArrayList<Game> = arrayListOf()
+    var listGames = ArrayList<Game>()
 
     private fun getInstanceDatabase(): FirebaseDatabase {
         return FirebaseDatabase.getInstance()
@@ -28,7 +28,7 @@ class DatabaseFirebase {
         return result.toString()
     }
 
-    fun getAllGame(reference: String) {
+    fun getAllGame(reference: String): ArrayList<Game> {
         referenceDatabase(reference)
 
         this.reference.addValueEventListener(object : ValueEventListener {
@@ -44,6 +44,8 @@ class DatabaseFirebase {
                 TODO("Not yet implemented")
             }
         })
+
+        return listGames
     }
 
 }

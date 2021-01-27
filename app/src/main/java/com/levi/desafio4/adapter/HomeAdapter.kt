@@ -7,12 +7,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.levi.desafio4.R
+import com.levi.desafio4.entity.Game
 
-class HomeAdapter(var listGame: ArrayList<String>, val click: onClickListenerGame): RecyclerView.Adapter<HomeAdapter.ItemHolder>() {
+class HomeAdapter(var listGame: ArrayList<Game>, val click: onClickListenerGame): RecyclerView.Adapter<HomeAdapter.ItemHolder>() {
 
-    class ItemHolder(itemView: View, listGame: ArrayList<String>): RecyclerView.ViewHolder(itemView) {
-        var imageGame = itemView.findViewById<ImageView>(R.id.ivGame)
-        var nameGame = itemView.findViewById<TextView>(R.id.tvNameGame)
+    class ItemHolder(itemView: View, listGame: ArrayList<Game>): RecyclerView.ViewHolder(itemView) {
+        var imageGame: ImageView = itemView.findViewById(R.id.ivGame)
+        var nameGame: TextView = itemView.findViewById(R.id.tvNameGame)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
@@ -21,8 +22,10 @@ class HomeAdapter(var listGame: ArrayList<String>, val click: onClickListenerGam
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-
         val game = listGame[position]
+
+        holder.imageGame.setImageResource(R.drawable.splash_firebase)
+        holder.nameGame.text = game.name
 
         holder.itemView.setOnClickListener {
             click.gameClick(position)

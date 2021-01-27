@@ -29,10 +29,6 @@ class CadastreGameFragment : Fragment() {
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,9 +42,8 @@ class CadastreGameFragment : Fragment() {
         view.btnSaveGame.setOnClickListener {
             val game = getDataFields(view)
             val result = viewModel.saveGame("games", game)
+            findNavController().navigate(R.id.action_cadastreGameFragment_to_homeFragment)
         }
-
-        findNavController().navigate(R.id.action_cadastreGameFragment_to_homeFragment)
     }
 
     private fun getDataFields(view: View): Game {
