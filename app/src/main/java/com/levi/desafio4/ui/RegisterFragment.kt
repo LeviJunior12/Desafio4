@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.levi.desafio4.R
 import com.levi.desafio4.service.firebase
 import com.levi.desafio4.viewmodel.AuthViewModel
+import kotlinx.android.synthetic.main.fragment_register.view.*
 import kotlinx.android.synthetic.main.register_body.view.*
 
 
@@ -45,7 +46,15 @@ class RegisterFragment : Fragment() {
             Log.i("ERROR REGISTER", "CHAMEI O BUTTON CREATE ACCOUNT")
         }
 
+        backLogin(view)
+
         return view
+    }
+
+    private fun backLogin(view: View) {
+        view.toolbar_icon_register_user.setNavigationOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun createAccount(view: View) {
@@ -64,7 +73,7 @@ class RegisterFragment : Fragment() {
         })
     }
 
-    private fun getDataFields(view: View){
+    private fun getDataFields(view: View) {
         name = view.ed_name.text.toString()
         email = view.ed_email.text.toString()
         password = view.tf_password.text.toString()

@@ -13,6 +13,7 @@ import com.levi.desafio4.R
 import com.levi.desafio4.entity.Game
 import com.levi.desafio4.service.databaseFirebase
 import com.levi.desafio4.viewmodel.GameViewModel
+import kotlinx.android.synthetic.main.fragment_cadastre_game.view.*
 import kotlinx.android.synthetic.main.register_game_body.view.*
 
 class CadastreGameFragment : Fragment() {
@@ -35,7 +36,14 @@ class CadastreGameFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_cadastre_game, container, false)
         addGame(view)
+        backHome(view)
         return view
+    }
+
+    private fun backHome(view: View) {
+        view.toolbar_icon_cadastre_game.setNavigationOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun addGame(view: View) {
