@@ -1,6 +1,5 @@
 package com.levi.desafio4.service
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -23,11 +22,9 @@ class Firebase() : FirebaseInterface {
                         val firebaseUser: FirebaseUser = task.result?.user!!
                         authUser.value = true
                         user = User(firebaseUser.uid, firebaseUser.email.toString())
-                        Log.i("LOGIN USER", "LOGADO COM SUCESSO")
                     }
                 } catch (e: Exception) {
                     authUser.value = false
-                    Log.i("ERROR LOGIN USER", e.message.toString())
                 }
             }
     }
@@ -40,11 +37,9 @@ class Firebase() : FirebaseInterface {
                         val firebaseUser: FirebaseUser = task.result?.user!!
                         authUser.value = true
                         user = User(firebaseUser.uid, firebaseUser.email.toString())
-                        Log.i("REGISTER USER", "USER REGISTER")
                     }
                 } catch (e: Exception) {
                     authUser.value = false
-                    Log.i("ERROR REGISTER", task.exception?.message.toString())
                 }
             }
     }

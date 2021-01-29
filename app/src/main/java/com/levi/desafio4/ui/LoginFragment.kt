@@ -1,11 +1,11 @@
 package com.levi.desafio4.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -54,7 +54,7 @@ class LoginFragment : Fragment() {
                         findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                     }
                     else -> {
-                        Log.i("ERROR", "ERRO AO EFETUAR O LOGIN")
+                        Toast.makeText(context, "Erro ao realizar login! Verifique seu E-mail ou Senha!", Toast.LENGTH_SHORT).show()
                     }
                 }
             })
@@ -71,6 +71,5 @@ class LoginFragment : Fragment() {
     private fun getDataFields(view: View) {
         email = view.tf_email.text.toString()
         password = view.ed_password.text.toString()
-        Log.i("DATA LOGIN", "${email} e ${password}")
     }
 }

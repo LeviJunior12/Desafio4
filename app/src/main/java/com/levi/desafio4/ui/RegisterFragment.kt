@@ -1,11 +1,11 @@
 package com.levi.desafio4.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -43,7 +43,6 @@ class RegisterFragment : Fragment() {
 
         view.btn_create_account.setOnClickListener {
             createAccount(view)
-            Log.i("ERROR REGISTER", "CHAMEI O BUTTON CREATE ACCOUNT")
         }
 
         backLogin(view)
@@ -59,7 +58,6 @@ class RegisterFragment : Fragment() {
 
     private fun createAccount(view: View) {
         getDataFields(view)
-        Log.i("ERROR REGISTER", "CHAMEI O CREATE ACCOUNT")
         viewModel.registerUser(name, email, password)
         viewModel.userLogin.observe(viewLifecycleOwner, {
             when (viewModel.userLogin.value) {
@@ -67,7 +65,7 @@ class RegisterFragment : Fragment() {
                     findNavController().navigate(R.id.action_registerFragment_to_homeFragment)
                 }
                 else -> {
-                    Log.i("ERRO NO REGISTRO", "ERRO NO REGISTRO")
+                    Toast.makeText(context, "Erro ao realizar o registro! Verifique os campos!", Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -78,7 +76,6 @@ class RegisterFragment : Fragment() {
         email = view.ed_email.text.toString()
         password = view.tf_password.text.toString()
         val passwordConfirm = view.tfc_password.text.toString()
-
     }
 
 }

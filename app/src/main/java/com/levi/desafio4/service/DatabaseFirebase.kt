@@ -1,6 +1,5 @@
 package com.levi.desafio4.service
 
-import android.util.Log
 import com.google.firebase.database.*
 import com.levi.desafio4.entity.Game
 
@@ -39,7 +38,6 @@ class DatabaseFirebase {
                 val messages: HashMap<String, Game>? = snapshot.getValue(t)
 
                 messages?.forEach {
-                    Log.i("it", it.value.toString())
                     val game: Game = it.value
                     listGames.add(game)
                 }

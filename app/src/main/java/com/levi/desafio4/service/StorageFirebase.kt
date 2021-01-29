@@ -20,7 +20,6 @@ class StorageFirebase {
         val uploadFile = storageReference.putFile(data.data!!)
         val task = uploadFile.continueWithTask {task ->
             if (task.isSuccessful) {
-                Log.i("IMAGEM", "IMAGEM CARREGADA COM SUCESSO")
             }
             storageReference.downloadUrl
         }.addOnCompleteListener {task ->

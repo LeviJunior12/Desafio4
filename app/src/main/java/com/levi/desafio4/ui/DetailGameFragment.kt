@@ -10,7 +10,6 @@ import com.levi.desafio4.R
 import com.levi.desafio4.entity.Game
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.detail_game_body.view.*
-import kotlinx.android.synthetic.main.fragment_detail_game.*
 import kotlinx.android.synthetic.main.fragment_detail_game.view.*
 
 class DetailGameFragment : Fragment() {
