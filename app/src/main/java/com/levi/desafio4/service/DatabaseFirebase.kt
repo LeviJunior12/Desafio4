@@ -52,3 +52,4 @@ class DatabaseFirebase {
 }
 
 val databaseFirebase: DatabaseFirebase = DatabaseFirebase()
+val storageFirebase: StorageFirebase = StorageFirebase()

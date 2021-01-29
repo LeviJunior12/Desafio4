@@ -1,6 +1,9 @@
 package com.levi.desafio4.ui
 
+import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +24,7 @@ class CadastreGameFragment : Fragment() {
     lateinit var nameGame: String
     lateinit var createAt: String
     lateinit var describe: String
+    lateinit var imageGame: Drawable
 
     private val viewModel by viewModels<GameViewModel> {
         object : ViewModelProvider.Factory {
@@ -37,6 +41,7 @@ class CadastreGameFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_cadastre_game, container, false)
         addGame(view)
         backHome(view)
+        getImageResource(view)
         return view
     }
 
@@ -51,6 +56,24 @@ class CadastreGameFragment : Fragment() {
             val game = getDataFields(view)
             val result = viewModel.saveGame("games", game)
             findNavController().navigate(R.id.action_cadastreGameFragment_to_homeFragment)
+        }
+    }
+
+    private fun getImageResource(view: View) {
+        view.ivUploadGame.setOnClickListener {
+            Log.i("TESTE", "IMAGEM")
+            val intent = Intent()
+            intent.type = "image/"
+            intent.action = Intent.ACTION_GET_CONTENT
+            startActivityForResult(Intent.createChooser(intent, "Image Captura"), targetRequestCode)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (data != null) {
+            viewModel.uploadImage(data)
         }
     }
 
