@@ -2,19 +2,20 @@ package com.levi.desafio4.service
 
 import android.content.Intent
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 
 class StorageFirebase {
 
     lateinit var storageReference: StorageReference
-    lateinit var urlImage: String
+    var urlImage: MutableLiveData<String> = MutableLiveData()
 
     private fun getReferenceStorage() {
         storageReference =  FirebaseStorage.getInstance().getReference("img")
     }
 
-    fun uploadImage(data: Intent) {
+    fun uploadImage(data: Intent){
         getReferenceStorage()
         val uploadFile = storageReference.putFile(data.data!!)
         val task = uploadFile.continueWithTask {task ->
@@ -25,7 +26,7 @@ class StorageFirebase {
         }.addOnCompleteListener {task ->
             if(task.isSuccessful) {
                 val downloadUri = task.result
-                urlImage = downloadUri!!.toString().substring(0, downloadUri.toString().indexOf("&token"))
+                urlImage.value = downloadUri!!.toString().substring(0, downloadUri.toString().indexOf("&token"))
             }
         }
     }

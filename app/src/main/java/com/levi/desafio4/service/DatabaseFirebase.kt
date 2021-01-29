@@ -2,7 +2,6 @@ package com.levi.desafio4.service
 
 import android.util.Log
 import com.google.firebase.database.*
-import com.google.gson.Gson
 import com.levi.desafio4.entity.Game
 
 class DatabaseFirebase {
@@ -34,10 +33,15 @@ class DatabaseFirebase {
         this.reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 listGames.clear()
-                snapshot.children.forEach {
-                    val game = Gson().fromJson(it.value.toString(), Game::class.java)
+
+                val t: GenericTypeIndicator<HashMap<String, Game>> =
+                    object : GenericTypeIndicator<HashMap<String, Game>>() {}
+                val messages: HashMap<String, Game>? = snapshot.getValue(t)
+
+                messages?.forEach {
+                    Log.i("it", it.value.toString())
+                    val game: Game = it.value
                     listGames.add(game)
-                    Log.i("LIST GAMES", game.toString())
                 }
             }
 

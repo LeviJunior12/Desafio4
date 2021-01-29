@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 class GameViewModel(val gameFirebase: DatabaseFirebase): ViewModel() {
 
     var listGame = MutableLiveData<ArrayList<Game>>()
-    var urlImage = MutableLiveData<String>()
+    var urlImage: MutableLiveData<String> = storageFirebase.urlImage
 
     fun saveGame(table: String, game: Game){
         viewModelScope.launch {

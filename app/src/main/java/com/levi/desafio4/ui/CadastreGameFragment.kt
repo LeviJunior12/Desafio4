@@ -24,7 +24,7 @@ class CadastreGameFragment : Fragment() {
     lateinit var nameGame: String
     lateinit var createAt: String
     lateinit var describe: String
-    lateinit var imageGame: Drawable
+    lateinit var url: String
 
     private val viewModel by viewModels<GameViewModel> {
         object : ViewModelProvider.Factory {
@@ -75,6 +75,13 @@ class CadastreGameFragment : Fragment() {
         if (data != null) {
             viewModel.uploadImage(data)
         }
+
+        viewModel.urlImage.observe(viewLifecycleOwner, {
+            if(viewModel.urlImage.value != null) {
+                url = viewModel.urlImage.value!!.toString()
+                Log.i("URL", url)
+            }
+        })
     }
 
     private fun getDataFields(view: View): Game {
@@ -82,7 +89,8 @@ class CadastreGameFragment : Fragment() {
         createAt = view.tfCreateAt.text.toString()
         describe = view.tfDescribe.text.toString()
 
-        return Game(nameGame, createAt, describe)
+        return Game(nameGame, createAt, describe, url)
+
     }
 
 }
