@@ -11,12 +11,12 @@ class StorageFirebase {
     lateinit var storageReference: StorageReference
     var urlImage: MutableLiveData<String> = MutableLiveData()
 
-    private fun getReferenceStorage() {
-        storageReference =  FirebaseStorage.getInstance().getReference("img")
+    private fun getReferenceStorage(location: String) {
+        storageReference =  FirebaseStorage.getInstance().getReference(location)
     }
 
-    fun uploadImage(data: Intent){
-        getReferenceStorage()
+    fun uploadImage(data: Intent, location: String){
+        getReferenceStorage(location)
         val uploadFile = storageReference.putFile(data.data!!)
         val task = uploadFile.continueWithTask {task ->
             if (task.isSuccessful) {

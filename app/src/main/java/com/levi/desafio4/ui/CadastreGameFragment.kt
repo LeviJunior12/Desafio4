@@ -18,6 +18,7 @@ import com.levi.desafio4.service.databaseFirebase
 import com.levi.desafio4.viewmodel.GameViewModel
 import kotlinx.android.synthetic.main.fragment_cadastre_game.view.*
 import kotlinx.android.synthetic.main.register_game_body.view.*
+import java.util.*
 
 class CadastreGameFragment : Fragment() {
 
@@ -65,7 +66,7 @@ class CadastreGameFragment : Fragment() {
             val intent = Intent()
             intent.type = "image/"
             intent.action = Intent.ACTION_GET_CONTENT
-            startActivityForResult(Intent.createChooser(intent, "Image Captura"), targetRequestCode)
+            startActivityForResult(Intent.createChooser(intent, "Image Captura"), 1000)
         }
     }
 
@@ -73,7 +74,7 @@ class CadastreGameFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (data != null) {
-            viewModel.uploadImage(data)
+            viewModel.uploadImage(data, Random().nextInt().toString())
         }
 
         viewModel.urlImage.observe(viewLifecycleOwner, {

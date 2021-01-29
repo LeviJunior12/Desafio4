@@ -28,9 +28,9 @@ class GameViewModel(val gameFirebase: DatabaseFirebase): ViewModel() {
         }
     }
 
-    fun uploadImage(data: Intent) {
+    fun uploadImage(data: Intent, location: String) {
         viewModelScope.launch {
-            storageFirebase.uploadImage(data)
+            storageFirebase.uploadImage(data, location)
         }
     }
 }

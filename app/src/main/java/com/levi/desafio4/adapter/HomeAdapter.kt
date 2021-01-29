@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.levi.desafio4.R
 import com.levi.desafio4.entity.Game
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.detail_game_body.view.*
 
 class HomeAdapter(var listGame: ArrayList<Game>, val click: onClickListenerGame): RecyclerView.Adapter<HomeAdapter.ItemHolder>() {
 
@@ -24,7 +26,7 @@ class HomeAdapter(var listGame: ArrayList<Game>, val click: onClickListenerGame)
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         val game = listGame[position]
 
-        holder.imageGame.setImageResource(R.drawable.splash_firebase)
+        Picasso.get().load(game.url).into(holder.imageGame)
         holder.nameGame.text = game.name
 
         holder.itemView.setOnClickListener {

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.levi.desafio4.R
 import com.levi.desafio4.entity.Game
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.detail_game_body.view.*
 import kotlinx.android.synthetic.main.fragment_detail_game.*
 import kotlinx.android.synthetic.main.fragment_detail_game.view.*
@@ -40,7 +41,7 @@ class DetailGameFragment : Fragment() {
     }
 
     private fun setDataGame(view: View) {
-        view.ivGameMain.setImageResource(R.drawable.splash_firebase)
+        Picasso.get().load(detailGame.url).into(view.ivGameMain)
         view.tvTitleGame.text = detailGame.name
         view.tvReleaseGame.text = detailGame.createdAt
         view.tvDescribeGame.text = detailGame.describe
