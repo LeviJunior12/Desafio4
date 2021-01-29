@@ -22,9 +22,11 @@
         android:id="@+id/tvTitleGame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:text="MORTAL KOMBAT"
         android:textColor="@color/black" />
 
@@ -32,9 +34,9 @@
         android:id="@+id/tvReleaseGame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="2dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="8dp"
         android:text="Lançamento 2018"
         android:textColor="@color/black" />
 
@@ -45,6 +47,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
+        android:textSize="16sp"
         android:text="Lançamento 2018 Lançamento 2018 Lançamento 2018 Lançamento 2018"
         android:textColor="@color/black" />
 

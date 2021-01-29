@@ -43,7 +43,8 @@ class DetailGameFragment : Fragment() {
     private fun setDataGame(view: View) {
         Picasso.get().load(detailGame.url).into(view.ivGameMain)
         view.tvTitleGame.text = detailGame.name
-        view.tvReleaseGame.text = detailGame.createdAt
+        val textRealease = "Lançamento: ${ detailGame.createdAt }"
+        view.tvReleaseGame.text = textRealease
         view.tvDescribeGame.text = detailGame.describe
     }
 
